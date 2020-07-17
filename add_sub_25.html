@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<title>Лист примеров для Сони</title>
+<body>
+<pre id="data" style="font-family: monospace;font-size: 15pt;">
+</pre>
+<script type="text/javascript">
+    var count = 40  ;
+    var maxResult = 25;
+    var payload = "";
+    while (count-- > 0) {
+        var v1 = Math.floor(Math.random() * (maxResult + 1));
+        var v2 = Math.floor(Math.random() * (maxResult + 1));
+        var sign = Math.floor(Math.random() * 2);
+        var expr = "";
+        var result = "";
+        if (Math.floor(Math.random() * 2) == 0) {
+            result += Math.max(v1, v2);
+            expr += (Math.min(v1, v2)).toString().padStart(2) +
+                " + " +
+                (Math.max(v1, v2) - Math.min(v1, v2)).toString().padStart(2);
+        } else {
+            result += Math.min(v1, v2);
+            expr += Math.max(v1, v2).toString().padStart(2) +
+                " - " +
+                (Math.max(v1, v2) - Math.min(v1, v2)).toString().padStart(2);
+        }
+
+        payload += expr + " = " + "_".repeat(45) + " " + result + "\n";
+    }
+    document.getElementById("data").innerHTML = payload;
+</script>
+</body>
+</html>
